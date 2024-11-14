@@ -19,7 +19,7 @@ export default function Home({}) {
                 <TouchableOpacity style={styles.BTN} onPress={()=> navigation.navigate('Start')}>
                     <Text style={styles.BTNText}>Start</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.BTN}>
+                <TouchableOpacity style={styles.BTN} onPress={()=>{navigation.navigate('Level')}}>
                     <Text style={styles.BTNText}>Level</Text>
                 </TouchableOpacity>
             </View>

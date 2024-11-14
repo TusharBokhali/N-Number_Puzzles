@@ -1,22 +1,23 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Colors } from '@/hooks/Color'
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 
-export default function Start() {
+
+export default function Hard() {
 
     const navigation = useNavigation();
 
-    const array = [1, 2, 3, 4, 5, 6, 7, 8 ];
-    const [final, setFinal] = useState(Array(9).fill(""))
+    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
+    const [final, setFinal] = useState(Array(16).fill(""))
     const [emptys, setEmpty] = useState(0);
     const [subname, setSubname] = useState('Start');
     function starting() {
-        let copy = Array(9).fill('');
-        let rand = () => Math.floor(Math.random() * 9);
+        let copy = Array(16).fill('');
+        let rand = () => Math.floor(Math.random() * 16);
         let i = 0;
 
 
@@ -37,7 +38,7 @@ export default function Start() {
             alert("Click The Start Button!!");
             return
         }
-        let checkPos = [emptys - 1, emptys + 1, emptys + 3, emptys - 3];
+        let checkPos = [emptys - 1, emptys + 1, emptys + 4, emptys - 4];
         if (checkPos.includes(index)) {
             let dub = [...final]
             dub[emptys] = dub[index]
@@ -48,35 +49,38 @@ export default function Start() {
 
     }
     let data = final.toString()
-    let win = '1,2,3,4,5,6,7,8';
+    
+    let win = '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15';
 
     if (data.includes(win)) {
         alert("Winners!!");
     }
 
-    return (
-        <SafeAreaView style={styles.container}>
-            <View><Ionicons name="arrow-back" size={24} color="white" onPress={()=>{router.back()}}/></View>
-            <Text style={{ marginVertical: 50, color: '#ffd000', fontSize: 26, textAlign: 'center', fontWeight: '600', }}>Target Pattern</Text>
-            <View>
-                <View style={{ alignItems: 'center', justifyContent: 'center', }}>
+  return (
+    <SafeAreaView style={styles.container}>
+    <TouchableOpacity>
+    <Ionicons name="arrow-back" size={24} color="white" onPress={()=>{router.back()}}/>
+    </TouchableOpacity>
+    <Text style={{ marginVertical: 50, color: '#ffd000', fontSize: 26, textAlign: 'center', fontWeight: '600', }}>Target Pattern</Text>
+    <View>
+        <View style={{ alignItems: 'center', justifyContent: 'center', }}>
 
-                    <View style={styles.Table}>
-                        {
-                            final.map((el, index) => {
-                                return <Text style={styles.BTNTE} onPress={() => control(index)}>{el}</Text>
-                            })
-                        }
-                    </View>
-                </View>
-                <View style={{ marginTop: 100, }}>
-                    <TouchableOpacity style={styles.Reset} onPress={() => { starting() }} >
-                        <Text style={styles.Text}>{subname}</Text>
-                    </TouchableOpacity>
-                </View>
+            <View style={styles.Table}>
+                {
+                    final.map((el, index) => {
+                        return <Text style={styles.BTNTE} onPress={() => control(index)}>{el}</Text>
+                    })
+                }
             </View>
-        </SafeAreaView>
-    )
+        </View>
+        <View style={{ marginTop: 100, }}>
+            <TouchableOpacity style={styles.Reset} onPress={() => { starting() }} >
+                <Text style={styles.Text}>{subname}</Text>
+            </TouchableOpacity>
+        </View>
+    </View>
+</SafeAreaView>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
         padding: 15,
     },
     Table: {
-        width: '80%',
+        width: '100%',
         flexDirection: 'row',
         flexWrap: 'wrap',
         borderRadius: 10,
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
         gap: 2,
     },
     BTNTE: {
-        width: '30%',
+        width: '20%',
         height: 80,
         backgroundColor: '#80805f',
         textAlign: 'center',
@@ -116,4 +120,5 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
     }
+    
 })
